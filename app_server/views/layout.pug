@@ -18,27 +18,38 @@ html
         font-size: 1rem; /* Increase font size of links */
         margin-right: 20px; /* Add margin to the right of each link */
       }
+      /* Custom style for cart icon */
+      .cart-icon {
+        height: 20px; /* Adjust icon height */
+        margin-right: 5px; /* Space between icon and text */
+      }
+
   body
     nav.navbar.fixed-top.navbar-expand-md.navbar-light
       .container
         a.navbar-brand(href='/')
           img(src='/images/roastlogo.jpg', alt='Roast', style='height: 40px;')
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarMain')
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarMain', aria-controls='navbarMain', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarMain.navbar-collapse.collapse
-          ul.navbar-nav.mr-auto.d-flex.align-items-center
+          // Use flex utility to align items
+          ul.navbar-nav.ml-auto.d-flex
             li.nav-item
               a.nav-link(href='/about/') About
             li.nav-item
               a.nav-link(href='/contact/') Contact
+            li.nav-item
+              a.nav-link(href='/cart') Cart
+
     .container.content
       block content
 
     footer
       .row
-        .col-12
+        .col-12.text-center
           small &copy; Team Roast
 
+    // Scripts for Bootstrap and jQuery
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', 
       integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo',
       crossorigin='anonymous')

@@ -1,22 +1,45 @@
- /* GET 'home' page */
- const homelist = (req, res) => {
-    res.render('home', { title: 'Home' });
-   };
-   /* GET 'Location info' page */
-   const locationInfo = (req, res) => {
-    res.render('Menu', { title: 'Location info' });
-   };
-   /* GET 'Add review' page */
-   const addReview = (req, res) => {
-    res.render('NewReview', { title: 'Add review' });
-   };
-   /* GET 'Contact Us' page */
-   const contact = (req, res) => {
-      res.render('contact', { title: 'Contact Us' });
-     };
-   module.exports = {
-    homelist,
-    locationInfo,
-    addReview,
-    contact
-   };
+// app_server/controllers/locations.js
+
+const homelist = (req, res) => {
+   res.render('home', { title: 'Home' });
+};
+
+const locationInfo = (req, res) => {
+   res.render('Menu', { title: 'Location info' });
+};
+
+const addReview = (req, res) => {
+   res.render('NewReview', { title: 'Add review' });
+};
+
+const contact = (req, res) => {
+   res.render('contact', { title: 'Contact Us' });
+};
+
+const cart = (req, res) => {
+   const cartItems = req.session.cart || []; // Ensure you are getting cart items
+   res.render('cart', { title: 'Your Cart', cartItems }); // Pass title and cart items
+};
+
+const addToCart = (req, res) => {
+   const item = req.body; // Assuming item data is sent in request body
+   req.session.cart = req.session.cart || [];
+   req.session.cart.push(item); // Add the item to the cart
+   res.redirect('/cart');
+};
+
+const removeFromCart = (req, res) => {
+   const itemId = req.params.id;
+   req.session.cart = req.session.cart.filter(item => item.id !== itemId); // Remove item from cart
+   res.redirect('/cart');
+};
+
+module.exports = {
+   homelist,
+   locationInfo,
+   addReview,
+   contact,
+   cart,
+   addToCart,
+   removeFromCart
+};

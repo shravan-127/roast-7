@@ -3,11 +3,11 @@ extends layout
 block content
   .row.banner
     .col-12
-      h1 Cappuccino
+      h1 Coffee Menu
 
   .row
     .col-12.col-lg-9
-      h2 Coffees
+      h2 Coffee
       .row
         // Coffee Items in Cards
         .col-12.col-md-6
@@ -19,7 +19,11 @@ block content
                 .coffee-description
                   p Our espresso is rich and bold, made from finely ground coffee beans.
                   p Cost: &#8377; 150
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='espresso')
+                    input(type='hidden', name='name', value='Espresso')
+                    input(type='hidden', name='price', value='150')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -29,7 +33,11 @@ block content
                 .coffee-description
                   p Our Americano is a smooth blend of espresso and hot water.
                   p Cost: &#8377; 180
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='americano')
+                    input(type='hidden', name='name', value='Americano')
+                    input(type='hidden', name='price', value='180')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -39,7 +47,11 @@ block content
                 .coffee-description
                   p Our cappuccino features a perfect balance of espresso, steamed milk, and froth.
                   p Cost: &#8377; 200
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='cappuccino')
+                    input(type='hidden', name='name', value='Cappuccino')
+                    input(type='hidden', name='price', value='200')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -49,7 +61,11 @@ block content
                 .coffee-description
                   p Our latte is creamy and smooth, crafted with steamed milk and espresso.
                   p Cost: &#8377; 220
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='latte')
+                    input(type='hidden', name='name', value='Latte')
+                    input(type='hidden', name='price', value='220')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -59,7 +75,11 @@ block content
                 .coffee-description
                   p Our mocha combines espresso with chocolate for a delightful treat.
                   p Cost: &#8377; 250
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='mocha')
+                    input(type='hidden', name='name', value='Mocha')
+                    input(type='hidden', name='price', value='250')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -69,7 +89,11 @@ block content
                 .coffee-description
                   p Our flat white features velvety microfoam poured over rich espresso.
                   p Cost: &#8377; 230
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='flatwhite')
+                    input(type='hidden', name='name', value='Flat White')
+                    input(type='hidden', name='price', value='230')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -79,7 +103,11 @@ block content
                 .coffee-description
                   p A perfect balance of espresso and warm milk, smooth and delightful.
                   p Cost: &#8377; 210
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='cortado')
+                    input(type='hidden', name='name', value='Cortado')
+                    input(type='hidden', name='price', value='210')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -89,7 +117,11 @@ block content
                 .coffee-description
                   p A scoop of vanilla ice cream topped with a shot of hot espresso.
                   p Cost: &#8377; 300
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='affogato')
+                    input(type='hidden', name='name', value='Affogato')
+                    input(type='hidden', name='price', value='300')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
           .card.card-primary
             .card-block
@@ -99,7 +131,11 @@ block content
                 .coffee-description
                   p Our cold brew is steeped for hours, resulting in a smooth and refreshing coffee.
                   p Cost: &#8377; 180
-                  a.btn.btn-primary(href='#') Add to Cart
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='coldbrew')
+                    input(type='hidden', name='name', value='Cold Brew')
+                    input(type='hidden', name='price', value='180')
+                    button.btn.btn-primary(type='submit') Add to Cart
 
     .row
       .col-12
@@ -131,6 +167,7 @@ block content
                 small.reviewTimestamp   14 February 2017
                 .col-12
                 p It was okay. Coffee wasn't great.
+
     .col-12.col-lg-3
       p
-        | If you've been and you like it - or if you don't - please leave a review to help other people just like you
+        | If you've been and you like it - or if you don't - please leave a review to help other people just like you.
