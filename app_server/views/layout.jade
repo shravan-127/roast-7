@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/all.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    style.
+      /* Custom styles to increase navbar size */
+      .navbar {
+        padding: 0.75rem; /* Increase top and bottom padding */
+      }
+      .navbar .navbar-brand {
+        font-size: 2.5rem; /* Increase brand font size */
+      }
+      .navbar .nav-link {
+        font-size: 1rem; /* Increase font size of links */
+        margin-right: 20px; /* Add margin to the right of each link */
+      }
+  body
+    nav.navbar.fixed-top.navbar-expand-md.navbar-light
+      .container
+        a.navbar-brand(href='/')
+          img(src='/images/roastlogo.jpg', alt='Roast', style='height: 40px;')
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarMain')
+          span.navbar-toggler-icon
+        #navbarMain.navbar-collapse.collapse
+          ul.navbar-nav.mr-auto.d-flex.align-items-center
+            li.nav-item
+              a.nav-link(href='/about/') About
+            li.nav-item
+              a.nav-link(href='/contact/') Contact
+    .container.content
+      block content
+
+    footer
+      .row
+        .col-12
+          small &copy; Team Roast
+
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', 
+      integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo',
+      crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js',
+      integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49',
+      crossorigin='anonymous')
+    script(src='/javascripts/bootstrap.min.js')
