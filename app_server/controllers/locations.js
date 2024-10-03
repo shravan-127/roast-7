@@ -5,7 +5,7 @@ const homelist = (req, res) => {
 };
 
 const locationInfo = (req, res) => {
-   res.render('Menu', { title: 'Location info' });
+   res.render('coffee', { title: 'Coffee Menu' }); // Change 'Menu' to 'coffee'
 };
 
 const addReview = (req, res) => {
@@ -36,7 +36,7 @@ const removeFromCart = (req, res) => {
 
 module.exports = {
    homelist,
-   locationInfo,
+   locationInfo, // This now renders 'coffee.pug'
    addReview,
    contact,
    cart,
