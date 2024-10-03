@@ -21,6 +21,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// Error handler middleware
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    title: 'Error Page',
+    message: err.message,
+    error: process.env.NODE_ENV === 'development' ? err : {} // Hide error details in production
+  });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
