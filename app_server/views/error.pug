@@ -2,9 +2,7 @@ doctype html
 html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title= title  // This line ensures the title is displayed correctly
+    title= title 
   body
     block content
       h1= message
-      h2= error.status
-      pre #{error.stack}

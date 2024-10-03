@@ -1,0 +1,8 @@
+mixin outputRating(rating)
+  // Loop to display filled stars based on the rating
+  - for (var i = 1; i <= rating; i++)
+    span.glyphicon.glyphicon-star
+
+  // Loop to display empty stars up to 5
+  - for (var i = rating; i < 5; i++)
+    span.glyphicon.glyphicon-star-empty
