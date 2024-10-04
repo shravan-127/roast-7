@@ -149,3 +149,17 @@ a {
 a:hover {
   color: #0a0606;
 }
+/* Add transparent background to h1 and p */
+/* Add transparent background to h1 and p */
+.banner h1 {
+  background-color: rgba(244, 236, 224, 0.9); /* Coffee cream color with 90% opacity */
+  padding: 20px; /* Add some padding around the text */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.banner p {
+  background-color: rgba(224, 188, 151, 0.7); /* Lighter coffee cream color with 70% opacity */
+  padding: 15px; /* Add some padding */
+  border-radius: 5px; /* Rounded corners */
+}
+
