@@ -26,7 +26,7 @@ block content
             .cart-item.card.card-primary.mb-3
               .card-body
                 h4.card-title= item.name
-                p.card-text Cost: ₹#{Number(item.price).toFixed(2)} // Ensure price is formatted to two decimal places
+                p.card-text Cost: ₹#{Number(item.price).toFixed(2)} 
                 a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove
 
          
