@@ -1,0 +1,195 @@
+extends layout
+
+block content
+  .row.banner
+    .col-12
+      h1 
+
+  .row
+    .col-12.col-lg-9
+      h2 Pastries
+      .row
+        // Croissant
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Croissant
+              .d-flex
+                img.img-fluid(src='/images/croissant.jpg', alt='Croissant', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Our croissants are buttery, flaky, and freshly baked.
+                  p Cost: &#8377; 100
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='croissant')
+                    input(type='hidden', name='name', value='Croissant')
+                    input(type='hidden', name='price', value='100')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Muffin
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Muffin
+              .d-flex
+                img.img-fluid(src='/images/muffin.jpg', alt='Muffin', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Our muffins are soft, fluffy, and come in a variety of flavors.
+                  p Cost: &#8377; 80
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='muffin')
+                    input(type='hidden', name='name', value='Muffin')
+                    input(type='hidden', name='price', value='80')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Danish Pastry
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Danish Pastry
+              .d-flex
+                img.img-fluid(src='/images/danish.jpg', alt='Danish Pastry', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Our Danish pastries are sweet, layered, and filled with fruit or custard.
+                  p Cost: &#8377; 120
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='danish')
+                    input(type='hidden', name='name', value='Danish Pastry')
+                    input(type='hidden', name='price', value='120')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Ten More Pastries
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Chocolate Éclair
+              .d-flex
+                img.img-fluid(src='/images/eclair.jpg', alt='Chocolate Éclair', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Light choux pastry filled with rich chocolate cream.
+                  p Cost: &#8377; 150
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='eclair')
+                    input(type='hidden', name='name', value='Chocolate Éclair')
+                    input(type='hidden', name='price', value='150')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Apple Strudel
+              .d-flex
+                img.img-fluid(src='/images/strudel.jpg', alt='Apple Strudel', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Warm, flaky pastry filled with spiced apples and raisins.
+                  p Cost: &#8377; 130
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='strudel')
+                    input(type='hidden', name='name', value='Apple Strudel')
+                    input(type='hidden', name='price', value='130')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Cinnamon Roll
+              .d-flex
+                img.img-fluid(src='/images/cinnamon_roll.jpg', alt='Cinnamon Roll', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Soft and gooey, with cinnamon and sweet icing on top.
+                  p Cost: &#8377; 110
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='cinnamon_roll')
+                    input(type='hidden', name='name', value='Cinnamon Roll')
+                    input(type='hidden', name='price', value='110')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Cheese Danish
+              .d-flex
+                img.img-fluid(src='/images/cheese_danish.jpg', alt='Cheese Danish', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p A buttery pastry filled with a creamy cheese center.
+                  p Cost: &#8377; 140
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='cheese_danish')
+                    input(type='hidden', name='name', value='Cheese Danish')
+                    input(type='hidden', name='price', value='140')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Almond Tart
+              .d-flex
+                img.img-fluid(src='/images/almond_tart.jpg', alt='Almond Tart', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p A sweet tart filled with almond paste and topped with toasted almonds.
+                  p Cost: &#8377; 160
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='almond_tart')
+                    input(type='hidden', name='name', value='Almond Tart')
+                    input(type='hidden', name='price', value='160')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Macaron
+              .d-flex
+                img.img-fluid(src='/images/macaron.jpg', alt='Macaron', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Light and airy French meringue cookies with various flavored fillings.
+                  p Cost: &#8377; 200
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='macaron')
+                    input(type='hidden', name='name', value='Macaron')
+                    input(type='hidden', name='price', value='200')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Baklava
+              .d-flex
+                img.img-fluid(src='/images/baklava.jpg', alt='Baklava', style='width: 100px; height: auto; margin-right: 15px;')
+                .pastry-description
+                  p Layers of phyllo dough, nuts, and honey syrup for a sweet delight.
+                  p Cost: &#8377; 180
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='baklava')
+                    input(type='hidden', name='name', value='Baklava')
+                    input(type='hidden', name='price', value='180')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+    .col-12.col-lg-3
+      .card.card-primary.review-card
+        .card-block
+          a.btn.btn-primary.float-right(href='/location/review/new') Add review
+          h2.card-title Customer reviews
+          .row.review
+            .col-12.no-gutters.review-header
+              span.rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.far.fa-star
+                i.far.fa-star
+              span.reviewAuthor Alice
+              small.reviewTimestamp 10 January 2024
+            .col-12
+              p The Croissant was buttery and delicious!
+
+          .row.review
+            .col-12.no-gutters.review-header
+              span.rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+              span.reviewAuthor Bob
+              small.reviewTimestamp 15 January 2024
+            .col-12
+              p The Muffin was soft and fluffy; I loved it!

@@ -5,7 +5,7 @@ const homelist = (req, res) => {
 };
 
 const locationInfo = (req, res) => {
-   res.render('coffee', { title: 'Coffee Menu' }); // Change 'Menu' to 'coffee'
+   res.render('coffee', { title: 'Coffee Menu' }); 
 };
 
 const addReview = (req, res) => {
@@ -15,7 +15,10 @@ const addReview = (req, res) => {
 const contact = (req, res) => {
    res.render('contact', { title: 'Contact Us' });
 };
-
+const pastries = (req, res) => {
+   res.render('pastries', { title: 'Pastries' });
+ };
+ 
 const cart = (req, res) => {
    const cartItems = req.session.cart || []; // Ensure you are getting cart items
    res.render('cart', { title: 'Your Cart', cartItems }); // Pass title and cart items
@@ -33,13 +36,18 @@ const removeFromCart = (req, res) => {
    req.session.cart = req.session.cart.filter(item => item.id !== itemId); // Remove item from cart
    res.redirect('/cart');
 };
+// app_server/controllers/locations.js
 
-module.exports = {
+
+ // Export the method
+ module.exports = {
    homelist,
-   locationInfo, // This now renders 'coffee.pug'
+   locationInfo,
+   pastries,  // Added this line for pastries
    addReview,
    contact,
    cart,
    addToCart,
    removeFromCart
-};
+ };
+ 
