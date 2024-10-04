@@ -68,12 +68,23 @@ legend {
 }
 
 /* Banner Styling */
+/* Banner Styling */
 .banner {
-  margin-top: 4em;
+  margin-top: 4em; /* Adjust this value to create space below the navbar */
   border-bottom: 1px solid #E8CBA0;
   margin-bottom: 1.5em;
   padding-bottom: 0.5em;
+  padding-top: 3em; /* Added padding at the top to prevent overlap */
 }
+
+/* Header Background */
+.header-background {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Optional: rounded corners */
+  display: inline-block; /* Ensure it only takes the space of the content */
+}
+
 
 /* Review Section */
 .review-header {
@@ -105,8 +116,16 @@ h4 small {
   color: #02141a;
 }
 
-h1 small {
-  color: #0f1313;
+h1 {
+  text-align: center; /* Center the heading */
+}
+
+/* Header Background */
+.header-background {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Optional: rounded corners */
+  display: inline-block; /* Ensure it only takes the space of the content */
 }
 
 /* Address and Facilities */

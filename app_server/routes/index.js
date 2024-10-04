@@ -8,14 +8,13 @@ router.get('/', ctrlLocations.homelist);
 router.get('/location', ctrlLocations.locationInfo);
 router.get('/contact', ctrlLocations.contact);
 router.get('/location/review/new', ctrlLocations.addReview);
-router.get('/pastries', ctrlLocations.pastries);  // Added route for pastries
+router.get('/pastries', ctrlLocations.pastries);
+router.get('/tea', ctrlLocations.tea);  // Route for the tea page
+
 /* Cart routes */
 router.get('/cart', ctrlLocations.cart); // Route to view cart
 router.post('/cart/add', ctrlLocations.addToCart); // Route to add item to cart
 router.get('/cart/remove/:id', ctrlLocations.removeFromCart); // Route to remove item from cart
-// app_server/routes/index.js
-
-
 
 /* Other pages */
 router.get('/about', ctrlOthers.about);

@@ -20,17 +20,44 @@ block content
     .col-12.col-lg-9
       h2 Your Cart
       .cart-items
-        // Display cart items
-        if cartItems.length
+     
+        if cartItems.length > 0
           each item in cartItems
             .cart-item.card.card-primary.mb-3
               .card-body
                 h4.card-title= item.name
-                p.card-text Cost: ₹#{item.price} 
+                p.card-text Cost: ₹#{Number(item.price).toFixed(2)} // Ensure price is formatted to two decimal places
                 a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove
+
+         
+          .row.mt-3
+            .col-12.text-center
+              button.btn.btn-success(onclick='showOrderConfirmation()') Place Order
         else
           p Your cart is empty.
 
-
       .add-to-cart-container
         a.btn.btn-primary(href='/') Add more items
+
+      .modal.fade(id='orderConfirmationModal', tabindex='-1', role='dialog')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5.modal-title Order Confirmation
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') &times
+            .modal-body
+              p Are you sure you want to place your order?
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
+              button.btn.btn-primary(onclick='placeOrder()') Confirm Order
+
+  script.
+    function showOrderConfirmation() {
+      $('#orderConfirmationModal').modal('show');
+    }
+
+    function placeOrder() {
+      alert('Order has been placed!');
+      window.location.href = '/'; 
+    }

@@ -18,7 +18,10 @@ const contact = (req, res) => {
 const pastries = (req, res) => {
    res.render('pastries', { title: 'Pastries' });
  };
- 
+const tea = (req, res) => {
+   res.render('tea', { title: 'Tea Menu' }); // Change to render the correct tea view
+};
+
 const cart = (req, res) => {
    const cartItems = req.session.cart || []; // Ensure you are getting cart items
    res.render('cart', { title: 'Your Cart', cartItems }); // Pass title and cart items
@@ -43,7 +46,8 @@ const removeFromCart = (req, res) => {
  module.exports = {
    homelist,
    locationInfo,
-   pastries,  // Added this line for pastries
+   pastries,
+   tea,  
    addReview,
    contact,
    cart,

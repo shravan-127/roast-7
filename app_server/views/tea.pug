@@ -1,0 +1,174 @@
+extends layout
+
+block content
+  .row.banner
+    .col-12
+      h1 Tea Menu
+
+  .row
+    .col-12.col-lg-9
+      h2 Our Teas
+      .row
+        // Green Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Green Tea
+              .d-flex
+                img.img-fluid(src='/images/green_tea.jpg', alt='Green Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A refreshing drink with numerous health benefits.
+                  p Cost: &#8377; 50
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='green_tea')
+                    input(type='hidden', name='name', value='Green Tea')
+                    input(type='hidden', name='price', value='50')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Black Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Black Tea
+              .d-flex
+                img.img-fluid(src='/images/black_tea.jpg', alt='Black Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A strong and robust tea, perfect for morning refreshment.
+                  p Cost: &#8377; 50
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='black_tea')
+                    input(type='hidden', name='name', value='Black Tea')
+                    input(type='hidden', name='price', value='50')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Herbal Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Herbal Tea
+              .d-flex
+                img.img-fluid(src='/images/herbal_tea.jpg', alt='Herbal Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A caffeine-free option made from various herbs and spices.
+                  p Cost: &#8377; 60
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='herbal_tea')
+                    input(type='hidden', name='name', value='Herbal Tea')
+                    input(type='hidden', name='price', value='60')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Chamomile Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Chamomile Tea
+              .d-flex
+                img.img-fluid(src='/images/chamomile_tea.jpg', alt='Chamomile Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A calming tea known for its relaxing properties.
+                  p Cost: &#8377; 60
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='chamomile_tea')
+                    input(type='hidden', name='name', value='Chamomile Tea')
+                    input(type='hidden', name='price', value='60')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Earl Grey Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Earl Grey Tea
+              .d-flex
+                img.img-fluid(src='/images/earl_grey_tea.jpg', alt='Earl Grey Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A black tea infused with bergamot for a unique flavor.
+                  p Cost: &#8377; 70
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='earl_grey_tea')
+                    input(type='hidden', name='name', value='Earl Grey Tea')
+                    input(type='hidden', name='price', value='70')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Masala Chai
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Masala Chai
+              .d-flex
+                img.img-fluid(src='/images/masala_chai.jpg', alt='Masala Chai', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A traditional Indian spiced tea with milk and spices.
+                  p Cost: &#8377; 80
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='masala_chai')
+                    input(type='hidden', name='name', value='Masala Chai')
+                    input(type='hidden', name='price', value='80')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Jasmine Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Jasmine Tea
+              .d-flex
+                img.img-fluid(src='/images/jasmine_tea.jpg', alt='Jasmine Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A fragrant tea made from green tea and jasmine blossoms.
+                  p Cost: &#8377; 70
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='jasmine_tea')
+                    input(type='hidden', name='name', value='Jasmine Tea')
+                    input(type='hidden', name='price', value='70')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+        // Mint Tea
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Mint Tea
+              .d-flex
+                img.img-fluid(src='/images/mint_tea.jpg', alt='Mint Tea', style='width: 100px; height: auto; margin-right: 15px;')
+                .tea-description
+                  p A refreshing tea infused with fresh mint leaves.
+                  p Cost: &#8377; 60
+                  form(action='/cart/add', method='POST')
+                    input(type='hidden', name='id', value='mint_tea')
+                    input(type='hidden', name='name', value='Mint Tea')
+                    input(type='hidden', name='price', value='60')
+                    button.btn.btn-primary(type='submit') Add to Cart
+
+    .row
+      .col-12.col-lg-3
+        p If you've tried our teas, leave a review and let others know!
+    .row
+    .col-12
+      .card.card-primary
+        .card-block
+          h2 Customer Reviews
+          a.btn.btn-primary(href='/tea/review/new') Add Review
+          // You can add existing reviews here if you have any
+          .row.review
+            .col-12.no-gutters.review-header
+              span.rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.far.fa-star
+                i.far.fa-star
+              span.reviewAuthor Jane Doe
+              small.reviewTimestamp 2024-10-01
+            .col-12
+              p This tea is fantastic! It has the perfect blend of flavors.
+
+          .row.review
+            .col-12.no-gutters.review-header
+              span.rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.far.fa-star
+                i.far.fa-star
+              span.reviewAuthor John Smith
+              small.reviewTimestamp 2024-10-02
+            .col-12
+              p I love the variety of teas offered here!

@@ -3,10 +3,10 @@ include _includes/sharedHTMLfunctions
 
 block content
   .row.banner
-    .col-12
+    .col-12.text-center  
       img(src="images/roastlogo.jpg", alt="Roast Logo", class="img-fluid", style="max-width: 800px;") 
-      h1 
-      small &nbsp;
+      h1 Welcome to Roast Café
+      p Discover the finest coffees and pastries made with love and local ingredients.
 
   // Coffee Section
   .row
@@ -18,13 +18,12 @@ block content
           .row
             .col-6
               p.facilities
-                span.badge.badge-warning Coffee is a beloved beverage made from roasted coffee beans
-                span.badge.badge-warning the seeds of the Coffea plant. Ground and brewed with hot water,
+                span.badge.badge-warning Coffee is a beloved beverage made from roasted coffee beans.
+                span.badge.badge-warning The seeds of the Coffea plant. Ground and brewed with hot water,
                 span.badge.badge-warning it offers a rich array of flavors and aromas. Enjoyed globally in 
-                span.badge.badge-warning forms like espresso, lattes, and cold brews of flavors and aromas. 
-                span.badge.badge-warning Enjoyed globally in forms like espresso, lattes, and cold brews 
-                span.badge.badge-warning coffee is celebrated for its stimulating effects due to caffeine.
-                span.badge.badge-warning  Beyond its taste, coffee holds cultural significance, often serving 
+                span.badge.badge-warning forms like espresso, lattes, and cold brews.
+                span.badge.badge-warning Coffee is celebrated for its stimulating effects due to caffeine.
+                span.badge.badge-warning Beyond its taste, coffee holds cultural significance, often serving 
                 span.badge.badge-warning as a social catalyst in gatherings and daily routines, making it a 
                 span.badge.badge-warning cherished part of many people's lives.
             .col-6
@@ -49,5 +48,25 @@ block content
             .col-6
               img(src="images/pastrylogo.jpg", alt="Pastries Image", class="img-fluid")
 
-    .col-12.col-md-4
+    // Tea Section
+    .row
+      .col-12.col-md-8
+        .card
+          .card-block
+            h4
+              a(href="/tea") Tea
+            .row
+              .col-6
+                p.facilities
+                  span.badge.badge-warning Tea is a popular beverage made by steeping cured or fresh 
+                  span.badge.badge-warning tea leaves in hot water. It comes in various types, including black, 
+                  span.badge.badge-warning green, white, and herbal, each offering unique flavors 
+                  span.badge.badge-warning and health benefits. Enjoyed both hot and cold, tea is a staple in
+                  span.badge.badge-warning many cultures worldwide.
+                  
+              .col-6
+                img(src="images/tea.jpg", alt="Tea Image", class="img-fluid")
+
+    .col-12
       p.lead
+        | Join us for a delightful experience, and don't forget to try our special blends and treats!
