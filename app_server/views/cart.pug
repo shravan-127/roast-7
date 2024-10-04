@@ -1,63 +1,54 @@
 extends layout
+include _includes/sharedHTMLfunctions
 
 block content
-  .row
-    // Navigation Bar
-    .navbar.navbar-light.bg-light
-      .container-fluid
-        .navbar-brand(href='/') Coffee Shop
-        .navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        .collapse.navbar-collapse#navbarNav
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link(href='/cart') Cart
-            li.nav-item
-              a.nav-link(href='/about') About
-            li.nav-item
-              a.nav-link(href='/contact') Contact
+  .row.banner
+    .col-12.text-center  
+      img(src="images/roastlogo.jpg", alt="Roast Logo", class="img-fluid", style="max-width: 800px;") 
+      h1 Welcome to Roast Café
+      p Discover the finest coffees and pastries made with love and local ingredients.
 
-    .col-12.col-lg-9
+  // Cart Items Section
+  .row
+    .col-12
       h2 Your Cart
       .cart-items
-     
-        if cartItems.length > 0
+        if cartItems.length
           each item in cartItems
             .cart-item.card.card-primary.mb-3
               .card-body
                 h4.card-title= item.name
-                p.card-text Cost: ₹#{Number(item.price).toFixed(2)} 
+                p.card-text Cost: ₹#{item.price} 
                 a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove
-
-         
-          .row.mt-3
-            .col-12.text-center
-              button.btn.btn-success(onclick='showOrderConfirmation()') Place Order
         else
           p Your cart is empty.
 
-      .add-to-cart-container
-        a.btn.btn-primary(href='/') Add more items
+      // Place Order Button
+      .col-12.text-center
+        button.btn.btn-success(onclick='showModal()') Place Order
 
-      .modal.fade(id='orderConfirmationModal', tabindex='-1', role='dialog')
+      // Modal for Confirmation
+      .modal.fade#orderModal(tabindex='-1', role='dialog')
         .modal-dialog(role='document')
           .modal-content
             .modal-header
               h5.modal-title Order Confirmation
               button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') &times
+                span(aria-hidden='true') &times;
             .modal-body
-              p Are you sure you want to place your order?
+              p Are you sure you want to place the order?
             .modal-footer
               button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
               button.btn.btn-primary(onclick='placeOrder()') Confirm Order
 
+  // JavaScript for Modal
   script.
-    function showOrderConfirmation() {
-      $('#orderConfirmationModal').modal('show');
+    function showModal() {
+      $('#orderModal').modal('show');
     }
 
     function placeOrder() {
-      alert('Order has been placed!');
-      window.location.href = '/'; 
+      // Logic for placing the order goes here
+      alert('Order placed successfully!'); // Placeholder for order logic
+      $('#orderModal').modal('hide'); // Hide the modal after placing order
     }
