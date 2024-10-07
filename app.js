@@ -41,8 +41,16 @@ app.post('/cart/add', (req, res) => {
         req.session.cart = [];
     }
 
-    // Add item to the cart
-    req.session.cart.push({ id, name, price: parseInt(price, 10) }); // Parse price as an integer
+    // Check if the item already exists in the cart
+    const existingItem = req.session.cart.find(item => item.id === id);
+    if (existingItem) {
+        // If it exists, increase the quantity
+        existingItem.quantity = (existingItem.quantity || 1) + 1; // Initialize quantity if not present
+    } else {
+        // Add item to the cart with quantity 1
+        req.session.cart.push({ id, name, price: parseInt(price, 10), quantity: 1 }); // Parse price as an integer
+    }
+
     res.redirect('/cart'); // Redirect to the cart view
 });
 
@@ -50,6 +58,25 @@ app.post('/cart/add', (req, res) => {
 app.get('/cart', (req, res) => {
     const cartItems = req.session.cart || []; // Get cart items from session
     res.render('cart', { title: 'Your Cart', cartItems }); // Render cart.pug with cart items
+});
+
+// Cart route to remove an item from the cart
+app.post('/cart/remove/:id', (req, res) => {
+    const itemId = req.params.id; // Get the item ID from the route parameter
+    if (req.session.cart) {
+        // Find the item in the cart
+        const itemIndex = req.session.cart.findIndex(item => item.id === itemId);
+        if (itemIndex > -1) {
+            // Decrease the quantity
+            req.session.cart[itemIndex].quantity--;
+
+            // If quantity is 0, remove the item from the cart
+            if (req.session.cart[itemIndex].quantity === 0) {
+                req.session.cart.splice(itemIndex, 1);
+            }
+        }
+    }
+    res.redirect('/cart'); // Redirect to the cart view
 });
 
 // Error handler middleware

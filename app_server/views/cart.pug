@@ -3,15 +3,12 @@ include _includes/sharedHTMLfunctions
 
 block content  
   .row.banner  
-    .col-12.text-center  
-      img(src="images/roastlogo.jpg", alt="Roast Logo", class="img-fluid", style="max-width: 800px;")   
-      h1 Welcome to Roast Café  
-      p Discover the finest coffees and pastries made with love and local ingredients.  
+    .col-12.text-center 
+      h2 Your Cart  
 
   // Cart Items Section  
   .row  
     .col-12  
-      h2 Your Cart  
       .cart-items  
         if cartItems.length  
           each item in cartItems  
@@ -19,6 +16,7 @@ block content
               .card-body  
                 h4.card-title= item.name  
                 p.card-text Cost: ₹#{item.price}   
+                p.card-text Quantity: #{item.quantity} 
                 a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove  
         else  
           p Your cart is empty.  
