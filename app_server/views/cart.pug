@@ -1,54 +1,62 @@
-extends layout
-include _includes/sharedHTMLfunctions
+extends layout  
+include _includes/sharedHTMLfunctions  
 
-block content
-  .row.banner
+block content  
+  .row.banner  
     .col-12.text-center  
-      img(src="images/roastlogo.jpg", alt="Roast Logo", class="img-fluid", style="max-width: 800px;") 
-      h1 Welcome to Roast Café
-      p Discover the finest coffees and pastries made with love and local ingredients.
+      img(src="images/roastlogo.jpg", alt="Roast Logo", class="img-fluid", style="max-width: 800px;")   
+      h1 Welcome to Roast Café  
+      p Discover the finest coffees and pastries made with love and local ingredients.  
 
-  // Cart Items Section
-  .row
-    .col-12
-      h2 Your Cart
-      .cart-items
-        if cartItems.length
-          each item in cartItems
-            .cart-item.card.card-primary.mb-3
-              .card-body
-                h4.card-title= item.name
-                p.card-text Cost: ₹#{item.price} 
-                a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove
-        else
-          p Your cart is empty.
+  // Cart Items Section  
+  .row  
+    .col-12  
+      h2 Your Cart  
+      .cart-items  
+        if cartItems.length  
+          each item in cartItems  
+            .cart-item.card.card-primary.mb-3  
+              .card-body  
+                h4.card-title= item.name  
+                p.card-text Cost: ₹#{item.price}   
+                a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove  
+        else  
+          p Your cart is empty.  
 
-      // Place Order Button
-      .col-12.text-center
-        button.btn.btn-success(onclick='showModal()') Place Order
+      // Place Order Button  
+      .col-12.text-center  
+        button.btn.btn-success(type='button', onclick='showModal()') Place Order  
 
-      // Modal for Confirmation
-      .modal.fade#orderModal(tabindex='-1', role='dialog')
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              h5.modal-title Order Confirmation
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') &times;
-            .modal-body
-              p Are you sure you want to place the order?
-            .modal-footer
-              button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
-              button.btn.btn-primary(onclick='placeOrder()') Confirm Order
+      // Modal for Confirmation  
+      .modal.fade#orderModal(tabindex='-1', role='dialog', aria-labelledby='modalTitle', aria-hidden='true')  
+        .modal-dialog(role='document')  
+          .modal-content  
+            .modal-header  
+              h5#modalTitle.modal-title Order Confirmation  
+              button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='hideModal()')  
+                span(aria-hidden='true') &times;  
+            .modal-body  
+              p Are you sure you want to place the order?  
+            .modal-footer  
+              button.btn.btn-secondary(type='button', data-dismiss='modal', onclick='hideModal()') Cancel  
+              button.btn.btn-primary(onclick='placeOrder()') Confirm Order  
 
-  // JavaScript for Modal
-  script.
-    function showModal() {
-      $('#orderModal').modal('show');
-    }
+  // JavaScript for Modal  
+  script.  
+    function showModal() {  
+      $('#orderModal').modal('show');  
+    }  
 
-    function placeOrder() {
-      // Logic for placing the order goes here
-      alert('Order placed successfully!'); // Placeholder for order logic
-      $('#orderModal').modal('hide'); // Hide the modal after placing order
-    }
+    function hideModal() {  
+      $('#orderModal').modal('hide');  
+    }  
+
+    function placeOrder() {  
+      alert('Order placed successfully!'); // Placeholder for order logic  
+      hideModal(); // Hide the modal after placing order  
+    }  
+
+  // jQuery, Popper, and Bootstrap  
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js', integrity='sha384-KyZXEAg3QhqLMpG8r+Knujsl7/3pRAxzl3hlOY4wX5ZVOJqxjyGO4v4XYKpIhGyV', crossorigin='anonymous')  
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJTYAhtQOp6bJTwBi8jVBxZZv+Ce/Ge5jlF6I9j0E69M/65pZ', crossorigin='anonymous')  
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy9VjFZx9jOsKcxoipAKDd9kt57NynqE2tMJye6', crossorigin='anonymous')
