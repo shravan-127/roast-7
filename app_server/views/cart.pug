@@ -2,59 +2,66 @@ extends layout
 include _includes/sharedHTMLfunctions  
 
 block content  
-  .row.banner  
-    .col-12.text-center 
-      h2 Your Cart  
+  .container  
+    .row.banner  
+      .col-12.text-center 
+        h2 Your Cart  
 
-  // Cart Items Section  
-  .row  
-    .col-12  
-      .cart-items  
-        if cartItems.length  
-          each item in cartItems  
-            .cart-item.card.card-primary.mb-3  
-              .card-body  
-                h4.card-title= item.name  
-                p.card-text Cost: ₹#{item.price}   
-                p.card-text Quantity: #{item.quantity} 
-                a.btn.btn-danger(href=`/cart/remove/${item.id}`) Remove  
-        else  
-          p Your cart is empty.  
+    // Cart Items Section  
+    .row  
+      .col-12  
+        .card.mb-3  
+          .card-body  
+            .cart-items  
+              if cartItems.length  
+                each item in cartItems  
+                  .cart-item.mb-3.d-flex.align-items-center  
+                    .item-details.flex-grow-1  
+                      h5.card-title= item.name  
+                      p.card-text Cost: ₹#{item.price}   
+                      p.card-text Quantity: #{item.quantity} 
+                      p.card-text Subtotal: ₹#{(item.price * item.quantity).toFixed(2)}  
+                      a.btn.btn-danger(href=`/cart/remove/${item.id}`, role='button') Remove  
+              else  
+                p.text-center Your cart is empty.  
 
-      // Place Order Button  
-      .col-12.text-center  
-        button.btn.btn-success(type='button', onclick='showModal()') Place Order  
+          // Place Order Button  
+          .text-center  
+            button.btn.btn-success(type='button', onclick='showModal()')  
+              i.fa.fa-shopping-cart.mr-2  
+              | Place Order  
 
-      // Modal for Confirmation  
-      .modal.fade#orderModal(tabindex='-1', role='dialog', aria-labelledby='modalTitle', aria-hidden='true')  
-        .modal-dialog(role='document')  
-          .modal-content  
-            .modal-header  
-              h5#modalTitle.modal-title Order Confirmation  
-              button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='hideModal()')  
-                span(aria-hidden='true') &times;  
-            .modal-body  
-              p Are you sure you want to place the order?  
-            .modal-footer  
-              button.btn.btn-secondary(type='button', data-dismiss='modal', onclick='hideModal()') Cancel  
-              button.btn.btn-primary(onclick='placeOrder()') Confirm Order  
+          // Modal for Confirmation  
+          .modal.fade#orderModal(tabindex='-1', role='dialog', aria-labelledby='modalTitle', aria-hidden='true')  
+            .modal-dialog(role='document')  
+              .modal-content  
+                .modal-header  
+                  h5#modalTitle.modal-title Order Confirmation  
+                  button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='hideModal()')  
+                    span(aria-hidden='true') &times;  
+                .modal-body  
+                  p Are you sure you want to place the order?  
+                .modal-footer  
+                  button.btn.btn-secondary(type='button', data-dismiss='modal', onclick='hideModal()') Cancel  
+                  button.btn.btn-primary(onclick='placeOrder()') Confirm Order  
 
-  // JavaScript for Modal  
-  script.  
-    function showModal() {  
-      $('#orderModal').modal('show');  
-    }  
+    // JavaScript for Modal  
+    script.  
+      function showModal() {  
+        $('#orderModal').modal('show');  
+      }  
 
-    function hideModal() {  
-      $('#orderModal').modal('hide');  
-    }  
+      function hideModal() {  
+        $('#orderModal').modal('hide');  
+      }  
 
-    function placeOrder() {  
-      alert('Order placed successfully!'); // Placeholder for order logic  
-      hideModal(); // Hide the modal after placing order  
-    }  
+      function placeOrder() {  
+        alert('Order placed successfully!'); // Placeholder for order logic  
+        hideModal(); // Hide the modal after placing order  
+      }  
 
-  // jQuery, Popper, and Bootstrap  
-  script(src='https://code.jquery.com/jquery-3.6.0.min.js', integrity='sha384-KyZXEAg3QhqLMpG8r+Knujsl7/3pRAxzl3hlOY4wX5ZVOJqxjyGO4v4XYKpIhGyV', crossorigin='anonymous')  
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJTYAhtQOp6bJTwBi8jVBxZZv+Ce/Ge5jlF6I9j0E69M/65pZ', crossorigin='anonymous')  
-  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy9VjFZx9jOsKcxoipAKDd9kt57NynqE2tMJye6', crossorigin='anonymous')
+    // jQuery, Popper, and Bootstrap  
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js', integrity='sha384-KyZXEAg3QhqLMpG8r+Knujsl7/3pRAxzl3hlOY4wX5ZVOJqxjyGO4v4XYKpIhGyV', crossorigin='anonymous')  
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJTYAhtQOp6bJTwBi8jVBxZZv+Ce/Ge5jlF6I9j0E69M/65pZ', crossorigin='anonymous')  
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy9VjFZx9jOsKcxoipAKDd9kt57NynqE2tMJye6', crossorigin='anonymous')  
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', integrity='sha384-DyZv7F5p6LxtxwINQUzGp0r7X1U8OU4BRYFXQElWNGcO0bOj/09nWcFs1zNZs9D', crossorigin='anonymous')
