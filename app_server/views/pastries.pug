@@ -20,11 +20,7 @@ block content
                 .pastry-description
                   p Our croissants are buttery, flaky, and freshly baked.
                   p Cost: &#8377; 100
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='croissant')
-                    input(type='hidden', name='name', value='Croissant')
-                    input(type='hidden', name='price', value='100')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("croissant", "Croissant", 100)') Add to Cart
 
         // Muffin
         .col-12.col-md-6
@@ -36,11 +32,7 @@ block content
                 .pastry-description
                   p Our muffins are soft, fluffy, and come in a variety of flavors.
                   p Cost: &#8377; 80
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='muffin')
-                    input(type='hidden', name='name', value='Muffin')
-                    input(type='hidden', name='price', value='80')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("muffin", "Muffin", 80)') Add to Cart
 
         // Danish Pastry
         .col-12.col-md-6
@@ -52,13 +44,9 @@ block content
                 .pastry-description
                   p Our Danish pastries are sweet, layered, and filled with fruit or custard.
                   p Cost: &#8377; 120
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='danish')
-                    input(type='hidden', name='name', value='Danish Pastry')
-                    input(type='hidden', name='price', value='120')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("danish", "Danish Pastry", 120)') Add to Cart
 
-        // Ten More Pastries
+        // Chocolate Éclair
         .col-12.col-md-6
           .card.card-primary
             .card-block
@@ -68,11 +56,7 @@ block content
                 .pastry-description
                   p Light choux pastry filled with rich chocolate cream.
                   p Cost: &#8377; 150
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='eclair')
-                    input(type='hidden', name='name', value='Chocolate Éclair')
-                    input(type='hidden', name='price', value='150')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("eclair", "Chocolate Éclair", 150)') Add to Cart
 
         .col-12.col-md-6
           .card.card-primary
@@ -83,11 +67,7 @@ block content
                 .pastry-description
                   p Warm, flaky pastry filled with spiced apples and raisins.
                   p Cost: &#8377; 130
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='strudel')
-                    input(type='hidden', name='name', value='Apple Strudel')
-                    input(type='hidden', name='price', value='130')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("strudel", "Apple Strudel", 130)') Add to Cart
 
         .col-12.col-md-6
           .card.card-primary
@@ -98,11 +78,7 @@ block content
                 .pastry-description
                   p Soft and gooey, with cinnamon and sweet icing on top.
                   p Cost: &#8377; 110
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='cinnamon_roll')
-                    input(type='hidden', name='name', value='Cinnamon Roll')
-                    input(type='hidden', name='price', value='110')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("cinnamon_roll", "Cinnamon Roll", 110)') Add to Cart
 
         .col-12.col-md-6
           .card.card-primary
@@ -113,11 +89,7 @@ block content
                 .pastry-description
                   p A buttery pastry filled with a creamy cheese center.
                   p Cost: &#8377; 140
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='cheese_danish')
-                    input(type='hidden', name='name', value='Cheese Danish')
-                    input(type='hidden', name='price', value='140')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("cheese_danish", "Cheese Danish", 140)') Add to Cart
 
         .col-12.col-md-6
           .card.card-primary
@@ -128,11 +100,7 @@ block content
                 .pastry-description
                   p A sweet tart filled with almond paste and topped with toasted almonds.
                   p Cost: &#8377; 160
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='almond_tart')
-                    input(type='hidden', name='name', value='Almond Tart')
-                    input(type='hidden', name='price', value='160')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("almond_tart", "Almond Tart", 160)') Add to Cart
 
         .col-12.col-md-6
           .card.card-primary
@@ -143,11 +111,7 @@ block content
                 .pastry-description
                   p Light and airy French meringue cookies with various flavored fillings.
                   p Cost: &#8377; 200
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='macaron')
-                    input(type='hidden', name='name', value='Macaron')
-                    input(type='hidden', name='price', value='200')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("macaron", "Macaron", 200)') Add to Cart
 
         .col-12.col-md-6
           .card.card-primary
@@ -158,11 +122,7 @@ block content
                 .pastry-description
                   p Layers of phyllo dough, nuts, and honey syrup for a sweet delight.
                   p Cost: &#8377; 180
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='baklava')
-                    input(type='hidden', name='name', value='Baklava')
-                    input(type='hidden', name='price', value='180')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("baklava", "Baklava", 180)') Add to Cart
 
     .col-12.col-lg-3
       .card.card-primary.review-card
@@ -176,7 +136,7 @@ block content
                 i.fas.fa-star
                 i.fas.fa-star
                 i.far.fa-star
-                i.far.fa-star
+                i.fas.fa-star
               span.reviewAuthor Alice
               small.reviewTimestamp 10 January 2024
             .col-12
@@ -194,3 +154,47 @@ block content
               small.reviewTimestamp 15 January 2024
             .col-12
               p The Muffin was soft and fluffy; I loved it!
+
+  // Toast notification
+  .toast-container
+    .toast(id='toast', style='position: fixed; bottom: 20px; right: 20px; display: none;')
+      .toast-body 
+
+  // JavaScript for Add to Cart functionality
+  script.
+    function addToCart(itemId, itemName, itemPrice) {
+      const item = {
+        id: itemId,
+        name: itemName,
+        price: itemPrice,
+        quantity: 1 // Set the quantity you want to add
+      };
+
+      // Send a POST request to add the item to the cart
+      fetch('/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to add item to cart');
+        } else {
+          showToast(itemName); // Show toast with item name
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+      function showToast(itemName) {
+        const toast = document.getElementById('toast');
+        toast.querySelector('.toast-body').textContent = `${itemName} added to cart!`; // Set toast message
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000); // Hide after 3 seconds
+      }
+    }

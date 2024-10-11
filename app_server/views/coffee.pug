@@ -15,7 +15,7 @@ block content
             .card-block
               h3 Espresso
               .d-flex
-                img.img-fluid(src='/images/ezpresso.jpg', alt='Espresso', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/ezpresso.jpg', alt='A cup of Espresso', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our espresso is rich and bold, made from finely ground coffee beans.
                   p Cost: &#8377; 150
@@ -25,7 +25,7 @@ block content
             .card-block
               h3 Americano
               .d-flex
-                img.img-fluid(src='/images/americano.jpg', alt='Americano', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/americano.jpg', alt='A cup of Americano', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our Americano is a smooth blend of espresso and hot water.
                   p Cost: &#8377; 180
@@ -35,7 +35,7 @@ block content
             .card-block
               h3 Cappuccino
               .d-flex
-                img.img-fluid(src='/images/cappuccino.jpg', alt='Cappuccino', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/cappuccino.jpg', alt='A cup of Cappuccino', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our cappuccino features a perfect balance of espresso, steamed milk, and froth.
                   p Cost: &#8377; 200
@@ -45,7 +45,7 @@ block content
             .card-block
               h3 Latte
               .d-flex
-                img.img-fluid(src='/images/latte.jpg', alt='Latte', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/latte.jpg', alt='A cup of Latte', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our latte is creamy and smooth, crafted with steamed milk and espresso.
                   p Cost: &#8377; 220
@@ -55,7 +55,7 @@ block content
             .card-block
               h3 Mocha
               .d-flex
-                img.img-fluid(src='/images/mocha.jpg', alt='Mocha', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/mocha.jpg', alt='A cup of Mocha', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our mocha combines espresso with chocolate for a delightful treat.
                   p Cost: &#8377; 250
@@ -65,7 +65,7 @@ block content
             .card-block
               h3 Flat White
               .d-flex
-                img.img-fluid(src='/images/flatwhite.jpg', alt='Flat White', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/flatwhite.jpg', alt='A cup of Flat White', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our flat white features velvety microfoam poured over rich espresso.
                   p Cost: &#8377; 230
@@ -75,7 +75,7 @@ block content
             .card-block
               h3 Cortado
               .d-flex
-                img.img-fluid(src='/images/cortado.jpg', alt='Cortado', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/cortado.jpg', alt='A cup of Cortado', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p A perfect balance of espresso and warm milk, smooth and delightful.
                   p Cost: &#8377; 210
@@ -85,7 +85,7 @@ block content
             .card-block
               h3 Affogato
               .d-flex
-                img.img-fluid(src='/images/affogato.jpg', alt='Affogato', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/affogato.jpg', alt='A cup of Affogato', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p A scoop of vanilla ice cream topped with a shot of hot espresso.
                   p Cost: &#8377; 300
@@ -95,7 +95,7 @@ block content
             .card-block
               h3 Cold Brew
               .d-flex
-                img.img-fluid(src='/images/coldbrew.jpg', alt='Cold Brew', style='width: 100px; height: auto; margin-right: 15px;')
+                img.img-fluid(src='/images/coldbrew.jpg', alt='A cup of Cold Brew', style='width: 100px; height: auto; margin-right: 15px;')
                 .coffee-description
                   p Our cold brew is steeped for hours, resulting in a smooth and refreshing coffee.
                   p Cost: &#8377; 180
@@ -136,6 +136,11 @@ block content
       p
         | If you've been and you like it - or if you don't - please leave a review to help other people just like you.
 
+  // Toast notification
+  .toast-container
+    .toast(id='toast', style='position: fixed; bottom: 20px; right: 20px; display: none;')
+      .toast-body 
+
   // JavaScript for Add to Cart functionality
   script.
     function addToCart(itemId, itemName, itemPrice) {
@@ -155,14 +160,22 @@ block content
         body: JSON.stringify(item)
       })
       .then(response => {
-        if (response.ok) {
-          alert(`${itemName} has been added to your cart.`);
-        } else {
+        if (!response.ok) {
           throw new Error('Failed to add item to cart');
+        } else {
+          showToast(itemName); // Show toast with item name
         }
       })
       .catch(error => {
         console.error('Error:', error);
-        alert('There was an error adding the item to your cart.');
       });
+
+      function showToast(itemName) {
+        const toast = document.getElementById('toast');
+        toast.querySelector('.toast-body').textContent = `${itemName} added to cart!`; // Set toast message
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000); // Hide after 3 seconds
+      }
     }

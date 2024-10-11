@@ -19,11 +19,7 @@ block content
                 .tea-description
                   p A refreshing drink with numerous health benefits.
                   p Cost: &#8377; 50
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='green_tea')
-                    input(type='hidden', name='name', value='Green Tea')
-                    input(type='hidden', name='price', value='50')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("green_tea", "Green Tea", 50)') Add to Cart
 
         // Black Tea
         .col-12.col-md-6
@@ -35,11 +31,7 @@ block content
                 .tea-description
                   p A strong and robust tea, perfect for morning refreshment.
                   p Cost: &#8377; 50
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='black_tea')
-                    input(type='hidden', name='name', value='Black Tea')
-                    input(type='hidden', name='price', value='50')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("black_tea", "Black Tea", 50)') Add to Cart
 
         // Herbal Tea
         .col-12.col-md-6
@@ -51,11 +43,7 @@ block content
                 .tea-description
                   p A caffeine-free option made from various herbs and spices.
                   p Cost: &#8377; 60
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='herbal_tea')
-                    input(type='hidden', name='name', value='Herbal Tea')
-                    input(type='hidden', name='price', value='60')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("herbal_tea", "Herbal Tea", 60)') Add to Cart
 
         // Chamomile Tea
         .col-12.col-md-6
@@ -67,11 +55,7 @@ block content
                 .tea-description
                   p A calming tea known for its relaxing properties.
                   p Cost: &#8377; 60
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='chamomile_tea')
-                    input(type='hidden', name='name', value='Chamomile Tea')
-                    input(type='hidden', name='price', value='60')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("chamomile_tea", "Chamomile Tea", 60)') Add to Cart
 
         // Earl Grey Tea
         .col-12.col-md-6
@@ -83,11 +67,7 @@ block content
                 .tea-description
                   p A black tea infused with bergamot for a unique flavor.
                   p Cost: &#8377; 70
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='earl_grey_tea')
-                    input(type='hidden', name='name', value='Earl Grey Tea')
-                    input(type='hidden', name='price', value='70')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("earl_grey_tea", "Earl Grey Tea", 70)') Add to Cart
 
         // Masala Chai
         .col-12.col-md-6
@@ -99,11 +79,7 @@ block content
                 .tea-description
                   p A traditional Indian spiced tea with milk and spices.
                   p Cost: &#8377; 80
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='masala_chai')
-                    input(type='hidden', name='name', value='Masala Chai')
-                    input(type='hidden', name='price', value='80')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("masala_chai", "Masala Chai", 80)') Add to Cart
 
         // Jasmine Tea
         .col-12.col-md-6
@@ -115,11 +91,7 @@ block content
                 .tea-description
                   p A fragrant tea made from green tea and jasmine blossoms.
                   p Cost: &#8377; 70
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='jasmine_tea')
-                    input(type='hidden', name='name', value='Jasmine Tea')
-                    input(type='hidden', name='price', value='70')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("jasmine_tea", "Jasmine Tea", 70)') Add to Cart
 
         // Mint Tea
         .col-12.col-md-6
@@ -131,11 +103,7 @@ block content
                 .tea-description
                   p A refreshing tea infused with fresh mint leaves.
                   p Cost: &#8377; 60
-                  form(action='/cart/add', method='POST')
-                    input(type='hidden', name='id', value='mint_tea')
-                    input(type='hidden', name='name', value='Mint Tea')
-                    input(type='hidden', name='price', value='60')
-                    button.btn.btn-primary(type='submit') Add to Cart
+                  button.btn.btn-primary(onclick='addToCart("mint_tea", "Mint Tea", 60)') Add to Cart
 
     .row
       .col-12.col-lg-3
@@ -172,3 +140,47 @@ block content
               small.reviewTimestamp 2024-10-02
             .col-12
               p I love the variety of teas offered here!
+
+  // Toast notification
+  .toast-container
+    .toast(id='toast', style='position: fixed; bottom: 20px; right: 20px; display: none;')
+      .toast-body 
+
+  // JavaScript for Add to Cart functionality
+  script.
+    function addToCart(itemId, itemName, itemPrice) {
+      const item = {
+        id: itemId,
+        name: itemName,
+        price: itemPrice,
+        quantity: 1 // Set the quantity you want to add
+      };
+
+      // Send a POST request to add the item to the cart
+      fetch('/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to add item to cart');
+        } else {
+          showToast(itemName); // Show toast with item name
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+      function showToast(itemName) {
+        const toast = document.getElementById('toast');
+        toast.querySelector('.toast-body').textContent = `${itemName} added to cart!`; // Set toast message
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000); // Hide after 3 seconds
+      }
+    }
