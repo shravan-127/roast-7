@@ -39,7 +39,7 @@ const removeFromCart = (req, res) => {
    req.session.cart = req.session.cart.filter(item => item.id !== itemId); // Remove item from cart
    res.redirect('/cart');
 };
-// app_server/controllers/locations.js
+
 
 
  // Export the method
