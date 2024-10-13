@@ -123,38 +123,9 @@ block content
                   p Layers of phyllo dough, nuts, and honey syrup for a sweet delight.
                   p Cost: &#8377; 180
                   button.btn.btn-primary(onclick='addToCart("baklava", "Baklava", 180)') Add to Cart
-
-    .col-12.col-lg-3
-      .card.card-primary.review-card
-        .card-block
-          a.btn.btn-primary.float-right(href='/location/review/new') Add review
-          h2.card-title Customer reviews
-          .row.review
-            .col-12.no-gutters.review-header
-              span.rating
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.far.fa-star
-                i.fas.fa-star
-              span.reviewAuthor Alice
-              small.reviewTimestamp 10 January 2024
-            .col-12
-              p The Croissant was buttery and delicious!
-
-          .row.review
-            .col-12.no-gutters.review-header
-              span.rating
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-              span.reviewAuthor Bob
-              small.reviewTimestamp 15 January 2024
-            .col-12
-              p The Muffin was soft and fluffy; I loved it!
-
+    .row
+      .col-12.col-lg-3
+        p If you've tried our pastries, leave a review and let others know!
   // Toast notification
   .toast-container
     .toast(id='toast', style='position: fixed; bottom: 20px; right: 20px; display: none;')

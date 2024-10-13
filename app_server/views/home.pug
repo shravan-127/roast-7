@@ -8,9 +8,10 @@ block content
       h1 Welcome to Roast Café
       p Discover the finest coffees and pastries made with love and local ingredients.
 
-  // Coffee Section
+  // Main Content Area
   .row
     .col-12.col-md-8
+      // Coffee Section
       .card
         .card-block
           h4
@@ -29,9 +30,7 @@ block content
             .col-6
               img(src="images/coffee.jpg", alt="Cappuccino Image", class="img-fluid")
 
-  // Pastries Section
-  .row
-    .col-12.col-md-8
+      // Pastries Section
       .card
         .card-block
           h4
@@ -48,25 +47,73 @@ block content
             .col-6
               img(src="images/pastrylogo.jpg", alt="Pastries Image", class="img-fluid")
 
-    // Tea Section
-    .row
-      .col-12.col-md-8
-        .card
-          .card-block
-            h4
-              a(href="/tea") Tea
-            .row
-              .col-6
-                p.facilities
-                  span.badge.badge-warning Tea is a popular beverage made by steeping cured or fresh 
-                  span.badge.badge-warning tea leaves in hot water. It comes in various types, including black, 
-                  span.badge.badge-warning green, white, and herbal, each offering unique flavors 
-                  span.badge.badge-warning and health benefits. Enjoyed both hot and cold, tea is a staple in
-                  span.badge.badge-warning many cultures worldwide.
+      // Tea Section
+      .card
+        .card-block
+          h4
+            a(href="/tea") Tea
+          .row
+            .col-6
+              p.facilities
+                span.badge.badge-warning Tea is a popular beverage made by steeping cured or fresh 
+                span.badge.badge-warning tea leaves in hot water. It comes in various types, including black, 
+                span.badge.badge-warning green, white, and herbal, each offering unique flavors 
+                span.badge.badge-warning and health benefits. Enjoyed both hot and cold, tea is a staple in
+                span.badge.badge-warning many cultures worldwide.
                   
-              .col-6
-                img(src="images/tea.jpg", alt="Tea Image", class="img-fluid")
+            .col-6
+              img(src="images/tea.jpg", alt="Tea Image", class="img-fluid")
+
+    // Add Review Section on the Right Side
+    .col-12.col-md-4
+      .card
+        .card-block
+          h4 Add Review
+          p Share your experience with us!
+          a(href="/location/review/new", class="btn btn-primary") Add Review 
+
+      // Customer Reviews Section
+      .reviews-container
+        h5 Customer Reviews
+        // Existing and new reviews will be dynamically appended here
 
     .col-12
       p.lead
         | Join us for a delightful experience, and don't forget to try our special blends and treats!
+
+  script.
+    // Fetch reviews on page load
+    window.onload = async function() {
+      try {
+        const response = await fetch('/api/reviews'); // Fetch reviews from API
+        if (response.ok) {
+          const reviews = await response.json();
+          reviews.forEach(review => {
+            displayNewReview(review); // Display each review dynamically
+          });
+        }
+      } catch (err) {
+        console.error('Error fetching reviews:', err);
+      }
+    };
+
+    // Function to display a review dynamically in the .reviews-container
+          
+    function displayNewReview(review) {
+    if (review && review.name && review.rating !== undefined && review.review) {
+      const reviewsContainer = document.querySelector('.reviews-container');
+      const reviewHTML = `
+        <div class="card mb-2">
+          <div class="card-block">
+            <h5>${review.name}</h5>
+            <p>Rating: ${review.rating}</p>
+            <p>${review.review}</p>
+          </div>
+        </div>
+      `;
+      reviewsContainer.innerHTML += reviewHTML;
+    }else {
+      console.warn('Received an undefined or incomplete review:', review);
+     }
+    }
+    fetchReviews();

@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session'); 
+var session = require('express-session');
 require("./app_server/models/db");
 
 var indexRouter = require('./app_server/routes/index');
@@ -11,9 +11,9 @@ var usersRouter = require('./app_server/routes/users');
 
 var app = express();
 
-// view engine setup
+// View engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
-app.set('view engine', 'pug');  // Updated from jade to pug
+app.set('view engine', 'pug'); // Updated from jade to pug
 
 // Middleware
 app.use(logger('dev'));

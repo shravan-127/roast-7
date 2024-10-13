@@ -3,10 +3,10 @@ extends layout
 block content
   .row.banner
     .col-12
-      h1
+      h1 Add a Review
   .row
     .col-12.col-md-8
-      form(action="/location", method="get", role="form")
+      form(action="/location/review/new", method="post", id="reviewForm", role="form")
         .form-group.row
           label.col-10.col-sm-2.col-form-label(for="name") Name
           .col-12.col-sm-10
@@ -15,14 +15,54 @@ block content
           label.col-10.col-sm-2.col-form-label(for="rating") Rating
           .col-12.col-sm-2
             select#rating.form-control.input-sm(name="rating")
-              option 5
-              option 4
-              option 3
-              option 2
-              option 1
+              option(value="5") 5
+              option(value="4") 4
+              option(value="3") 3
+              option(value="2") 2
+              option(value="1") 1
         .form-group.row
           label.col-sm-2.col-form-label(for="review") Review
           .col-sm-10
             textarea#review.form-control(name="review", rows="5")
-        button.btn.btn-primary.float-right Add my review
-    .col-12.col-md-4
+        button.btn.btn-primary.float-right(type="submit") Add my review
+
+  script.
+    document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevent regular form submission
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData); // Convert formData to an object
+
+      try {
+        const response = await fetch('/location/review/new', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          const review = await response.json(); // Get the new review back
+          displayNewReview(review); // Display the new review dynamically
+          this.reset(); // Reset form after submission
+        }
+      } catch (err) {
+        console.error('Error submitting review:', err);
+      }
+    });
+
+    // Function to append the new review dynamically
+    function displayNewReview(review) {
+      const reviewsContainer = document.querySelector('.reviews-container');
+      const reviewHTML = `
+        <div class="card mb-2">
+          <div class="card-block">
+            <h5>${review.name}</h5>
+            <p>Rating: ${review.rating}</p>
+            <p>${review.review}</p>
+          </div>
+        </div>
+      `;
+      reviewsContainer.innerHTML += reviewHTML;
+    }
