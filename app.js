@@ -13,8 +13,7 @@ var app = express();
 
 // View engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
-app.set('view engine', 'pug'); // Updated from jade to pug
-
+app.set('view engine', 'jade');
 // Middleware
 app.use(logger('dev'));
 app.use(express.json());
