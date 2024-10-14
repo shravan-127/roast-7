@@ -1,12 +1,10 @@
 // models/db.js
 const mongoose = require('mongoose');
 require('dotenv').config(); // Load environment variables
-const dbURI = process.env.DB_URI || "mongodb://localhost:27017/roast"; // Fallback to default
+const dbURI="mongodb+srv://22eg107b11:Shravan@cluster0.bkmsx.mongodb.net/roast?retryWrites=true&w=majority"
 
-mongoose.connect(dbURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+
+mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbURI}`);
