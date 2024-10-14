@@ -1,7 +1,7 @@
 // models/db.js
 const mongoose = require('mongoose');
 require('dotenv').config(); // Load environment variables
-const dbURI="mongodb+srv://22eg107b11:Shravan@cluster0.bkmsx.mongodb.net/roast?retryWrites=true&w=majority"
+const dbURI="mongodb://localhost:27017/roast"
 
 
 mongoose.connect(dbURI);

@@ -24,14 +24,20 @@ exports.addReview = (req, res) => {
     });
 };
 
-// Function to fetch all reviews
-exports.getAllReviews = (req, res) => {
-  Review.find()
-    .then(reviews => {
-      res.json(reviews); // Send back all reviews as a JSON response
-    })
-    .catch(err => {
-      console.error('Error fetching reviews:', err);
-      res.status(500).json({ error: 'Failed to fetch reviews' });
+exports.getAllReviews = async (req, res) => {
+  const page = parseInt(req.query.page) || 1; // Current page
+  const limit = parseInt(req.query.limit) || 5; // Number of reviews per page
+  const skip = (page - 1) * limit; // Calculate how many reviews to skip
+
+  try {
+    const reviews = await Review.find().skip(skip).limit(limit); // Get the reviews
+    const totalReviews = await Review.countDocuments(); // Total number of reviews
+
+    res.status(200).json({
+      reviews,
+      totalPages: Math.ceil(totalReviews / limit), // Return total pages if needed
     });
+  } catch (error) {
+    res.status(500).json({ error: 'Unable to fetch reviews' });
+  }
 };
