@@ -12,6 +12,7 @@ router.get('/contact', ctrlLocations.contact);
 router.get('/location/review/new', ctrlLocations.addReview);
 router.get('/pastries', ctrlLocations.pastries);
 router.get('/tea', ctrlLocations.tea);  // Route for the tea page
+router.get('/sandwiches', ctrlLocations.sandwiches); // Make sure this is correctly linked
 
 /* Review routes */
 router.post('/location/review/new', ctrlReviews.addReview); // Ensure this points to the correct function

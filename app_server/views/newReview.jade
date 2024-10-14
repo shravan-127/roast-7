@@ -26,6 +26,11 @@ block content
             textarea#review.form-control(name="review", rows="5")
         button.btn.btn-primary.float-right(type="submit") Add my review
 
+  // Toast notification
+  .toast-container
+    .toast(id='toast', style='position: fixed; bottom: 20px; right: 20px; display: none;')
+      .toast-body 
+
   script.
     document.getElementById('reviewForm').addEventListener('submit', async function(e) {
       e.preventDefault(); // Prevent regular form submission
@@ -46,6 +51,7 @@ block content
           const review = await response.json(); // Get the new review back
           displayNewReview(review); // Display the new review dynamically
           this.reset(); // Reset form after submission
+          showToast("Review added successfully!"); // Show success notification
         }
       } catch (err) {
         console.error('Error submitting review:', err);
@@ -66,3 +72,19 @@ block content
       `;
       reviewsContainer.innerHTML += reviewHTML;
     }
+
+    // Function to show the toast notification
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.querySelector('.toast-body').textContent = message; // Set toast message
+      toast.style.display = 'block'; // Show the toast
+      setTimeout(() => {
+        toast.style.display = 'none'; // Hide after 3 seconds
+      }, 3000);
+    }
+
+    // jQuery, Popper, and Bootstrap
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js', integrity='sha384-KyZXEAg3QhqLMpG8r+Knujsl7/3pRAxzl3hlOY4wX5ZVOJqxjyGO4v4XYKpIhGyV', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJTYAhtQOp6bJTwBi8jVBxZZv+Ce/Ge5jlF6I9j0E69M/65pZ', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy9VjFZx9jOsKcxoipAKDd9kt57NynqE2tMJye6', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', integrity='sha384-DyZv7F5p6LxtxwINQUzGp0r7X1U8OU4BRYFXQElWNGcO0bOj/09nWcFs1zNZs9D', crossorigin='anonymous')

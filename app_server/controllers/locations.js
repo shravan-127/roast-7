@@ -15,11 +15,18 @@ const addReview = (req, res) => {
 const contact = (req, res) => {
    res.render('contact', { title: 'Contact Us' });
 };
+
 const pastries = (req, res) => {
    res.render('pastries', { title: 'Pastries' });
- };
+};
+
 const tea = (req, res) => {
    res.render('tea', { title: 'Tea Menu' }); // Change to render the correct tea view
+};
+
+const sandwiches = (req, res) => {
+   const cartItems = req.session.cart || []; // Fetch cart items from session
+   res.render('sandwiches', { title: 'Sandwich Menu', cartItems }); // Pass cart items to the view
 };
 
 const cart = (req, res) => {
@@ -40,18 +47,16 @@ const removeFromCart = (req, res) => {
    res.redirect('/cart');
 };
 
-
-
- // Export the method
- module.exports = {
+// Export the methods
+module.exports = {
    homelist,
    locationInfo,
    pastries,
    tea,  
    addReview,
    contact,
+   sandwiches,
    cart,
    addToCart,
    removeFromCart
- };
- 
+};

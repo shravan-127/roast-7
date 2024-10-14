@@ -1,0 +1,178 @@
+extends layout
+
+block content
+  .row.banner
+    .col-12
+      h1 Sandwich Menu
+
+  .row
+    .col-12.col-lg-9
+      h2 Our Sandwiches
+      .row
+        // Club Sandwich
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Club Sandwich
+              .d-flex
+                img.img-fluid(src='/images/club_sandwich.jpg', alt='Club Sandwich', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p A classic sandwich with layers of turkey, bacon, lettuce, and tomato.
+                  p Price: ₹150
+                  button.btn.btn-primary(onclick='addToCart("club_sandwich", "Club Sandwich", 150)') Add to Cart
+
+        // Veggie Delight
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Veggie Delight
+              .d-flex
+                img.img-fluid(src='/images/veggie_delight.jpg', alt='Veggie Delight', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p A wholesome sandwich packed with fresh veggies and hummus.
+                  p Price: ₹120
+                  button.btn.btn-primary(onclick='addToCart("veggie_delight", "Veggie Delight", 120)') Add to Cart
+
+        // Grilled Cheese
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Grilled Cheese
+              .d-flex
+                img.img-fluid(src='/images/grilled_cheese.jpg', alt='Grilled Cheese', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p A gooey grilled cheese sandwich made with premium cheddar.
+                  p Price: ₹100
+                  button.btn.btn-primary(onclick='addToCart("grilled_cheese", "Grilled Cheese", 100)') Add to Cart
+
+        // Chicken Salad Sandwich
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Chicken Salad Sandwich
+              .d-flex
+                img.img-fluid(src='/images/chicken_salad_sandwich.jpg', alt='Chicken Salad Sandwich', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p A refreshing chicken salad sandwich with crisp greens.
+                  p Price: ₹160
+                  button.btn.btn-primary(onclick='addToCart("chicken_salad", "Chicken Salad Sandwich", 160)') Add to Cart
+
+        // BLT Sandwich
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 BLT Sandwich
+              .d-flex
+                img.img-fluid(src='/images/blt_sandwich.jpg', alt='BLT Sandwich', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p Bacon, lettuce, and tomato on toasted bread, a classic combo.
+                  p Price: ₹140
+                  button.btn.btn-primary(onclick='addToCart("blt_sandwich", "BLT Sandwich", 140)') Add to Cart
+
+        // Tuna Melt
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Tuna Melt
+              .d-flex
+                img.img-fluid(src='/images/tuna_melt.jpg', alt='Tuna Melt', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p Delicious tuna salad topped with melted cheese.
+                  p Price: ₹150
+                  button.btn.btn-primary(onclick='addToCart("tuna_melt", "Tuna Melt", 150)') Add to Cart
+
+        // Caprese Sandwich
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Caprese Sandwich
+              .d-flex
+                img.img-fluid(src='/images/caprese_sandwich.jpg', alt='Caprese Sandwich', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p Fresh mozzarella, tomatoes, and basil on ciabatta bread.
+                  p Price: ₹180
+                  button.btn.btn-primary(onclick='addToCart("caprese_sandwich", "Caprese Sandwich", 180)') Add to Cart
+
+        // Falafel Wrap
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Falafel Wrap
+              .d-flex
+                img.img-fluid(src='/images/falafel_wrap.jpg', alt='Falafel Wrap', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p A tasty wrap filled with falafel and fresh vegetables.
+                  p Price: ₹130
+                  button.btn.btn-primary(onclick='addToCart("falafel_wrap", "Falafel Wrap", 130)') Add to Cart
+
+        // Turkey Avocado Sandwich
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Turkey Avocado Sandwich
+              .d-flex
+                img.img-fluid(src='/images/turkey_avocado_sandwich.jpg', alt='Turkey Avocado Sandwich', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p Lean turkey and creamy avocado on whole grain bread.
+                  p Price: ₹170
+                  button.btn.btn-primary(onclick='addToCart("turkey_avocado", "Turkey Avocado Sandwich", 170)') Add to Cart
+
+        // Spicy Veggie Sandwich
+        .col-12.col-md-6
+          .card.card-primary
+            .card-block
+              h3 Spicy Veggie Sandwich
+              .d-flex
+                img.img-fluid(src='/images/spicy_veggie_sandwich.jpg', alt='Spicy Veggie Sandwich', style='width: 100px; height: auto; margin-right: 15px;')
+                .sandwich-description
+                  p A zesty sandwich packed with grilled vegetables and spicy mayo.
+                  p Price: ₹140
+                  button.btn.btn-primary(onclick='addToCart("spicy_veggie", "Spicy Veggie Sandwich", 140)') Add to Cart
+
+    .row
+      .col-12.col-lg-3
+        p If you've tried our sandwiches, leave a review and let others know!
+
+  // Toast notification
+  .toast-container
+    .toast(id='toast', style='position: fixed; bottom: 20px; right: 20px; display: none;')
+      .toast-body 
+
+  // JavaScript for Add to Cart functionality
+  script.
+    function addToCart(itemId, itemName, itemPrice) {
+      const item = {
+        id: itemId,
+        name: itemName,
+        price: itemPrice,
+        quantity: 1 // Set the quantity you want to add
+      };
+
+      // Send a POST request to add the item to the cart
+      fetch('/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to add item to cart');
+        } else {
+          showToast(itemName); // Show toast with item name
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+      function showToast(itemName) {
+        const toast = document.getElementById('toast');
+        toast.querySelector('.toast-body').textContent = `${itemName} added to cart!`; // Set toast message
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000); // Hide after 3 seconds
+      }
+    }
