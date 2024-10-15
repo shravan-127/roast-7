@@ -1,0 +1,94 @@
+extends layout
+include _includes/sharedHTMLfunctions
+
+block content
+  .container
+    .row
+      // Add Review Section on the Right Side for larger screens
+      .col-12(style="padding-top:75px;")
+        .card
+          .card-block
+            h4 Add Review
+            p Share your experience with us!
+            a(href="/location/review/new", class="btn btn-primary") Add Review
+
+      // Customer Reviews Section in a Single Card for both mobile and larger screens
+      .col-12.col-md-8
+        .card.reviews-card(style="height: 500px; overflow-y: auto; border: 1px solid #ccc;")
+          .card-block
+            h5 Customer Reviews
+            p Read what our customers have to say about Roast Café!
+            .reviews-container(style="color: white;") // Set font color to white
+              // Existing and new reviews will be dynamically appended here
+
+    // Footer lead text
+    .col-12
+      p.lead
+        | Join us for a delightful experience, and don't forget to try our special blends and treats!
+
+  // JavaScript for fetching and displaying reviews
+  script.
+    let currentPage = 1; // Current page number
+    const limit = 5; // Number of reviews to load each time
+    let loading = false; // Flag to prevent multiple loads
+
+    // Function to fetch reviews from the server
+    async function fetchReviews(page) {
+      if (loading) return; // Prevent loading if already in progress
+      loading = true;
+
+      const reviewsContainer = document.querySelector('.reviews-container');
+      const loadingMessage = document.createElement('div');
+      loadingMessage.textContent = 'Loading more reviews...';
+      loadingMessage.style.textAlign = 'center';
+      loadingMessage.style.padding = '10px';
+      reviewsContainer.appendChild(loadingMessage); // Show loading message
+
+      try {
+        const response = await fetch(`/api/reviews?page=${page}&limit=${limit}`);
+        const data = await response.json();
+
+        // Display fetched reviews
+        data.reviews.forEach(review => {
+          displayNewReview(review);
+        });
+
+        currentPage++; // Increment current page for the next load
+      } catch (err) {
+        console.error('Error fetching reviews:', err);
+      } finally {
+        loading = false; // Reset loading flag
+        reviewsContainer.removeChild(loadingMessage); // Hide loading message
+      }
+    }
+
+    // Function to display a review dynamically in the .reviews-container
+    function displayNewReview(review) {
+      if (review && review.name && review.rating !== undefined && review.review) {
+        const reviewsContainer = document.querySelector('.reviews-container');
+        const reviewHTML = `
+          <div class="card mb-2" style="min-height: 150px;"> <!-- Increase min-height for longer cards -->
+            <div class="card-block">
+              <h5 style="color: white;">${review.name}</h5> <!-- Set name color to white -->
+              <p style="color: white;">Rating: ${review.rating}</p> <!-- Set rating color to white -->
+              <p style="color: white;">${review.review}</p> <!-- Set review text color to white -->
+            </div>
+          </div>
+        `;
+        reviewsContainer.innerHTML += reviewHTML; // Append new review
+      } else {
+        console.warn('Received an undefined or incomplete review:', review);
+      }
+    }
+
+    // Fetch initial set of reviews on page load
+    fetchReviews(currentPage); // Fetch initial reviews
+
+    // Event listener for scrolling to trigger fetching more reviews
+    document.querySelector('.reviews-card').addEventListener('scroll', () => {
+      const reviewsCard = document.querySelector('.reviews-card');
+      // Load more reviews when the user scrolls close to the bottom of the card
+      if (reviewsCard.scrollTop + reviewsCard.clientHeight >= reviewsCard.scrollHeight - 10) {
+        fetchReviews(currentPage);
+      }
+    });

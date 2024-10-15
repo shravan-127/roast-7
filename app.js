@@ -59,7 +59,11 @@ app.get('/cart', (req, res) => {
     const cartItems = req.session.cart || []; // Get cart items from session
     res.render('cart', { title: 'Your Cart', cartItems }); // Render cart.pug with cart items
 });
-
+app.get('/reviews', (req, res) => {
+    res.render('reviews', { title: 'Customer Reviews' }); // Pass the title to the view
+  });
+  
+  
 // Cart route to remove an item from the cart
 app.post('/cart/remove/:id', (req, res) => {
     const itemId = req.params.id; // Get the item ID from the route parameter
