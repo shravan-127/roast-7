@@ -16,7 +16,7 @@ router.get('/sandwiches', ctrlLocations.sandwiches); // Make sure this is correc
 
 /* Review routes */
 router.post('/location/review/new', ctrlReviews.addReview); // Ensure this points to the correct function
-router.get('/api/reviews', ctrlReviews.getAllReviews); // API route to get all reviews
+router.get('/reviews', ctrlReviews.getAllReviews); // API route to get all reviews
 
 /* Cart routes */
 router.get('/cart', ctrlLocations.cart); // Route to view cart
